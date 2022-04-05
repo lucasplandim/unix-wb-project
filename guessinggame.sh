@@ -1,21 +1,15 @@
 #!/usr/bin/env bash
 # File: guessinggame.sh
 
-# Get the number of files in my current directory
-function getthecount {
-cnt=$(find . -maxdepth 1 -type f|wc -l)
-  echo $cnt
-}
-
-# Get the entry of the user and compare with the number of files returned in the getthecount function
+# Get the response of the user and compare with the number of files in my current directory
 function guessinggame {
-
-count=$(getthecount)
 
 clear
 echo "Hi there! Welcome to my guess game!"
 echo "Guess how many files are in the current directory:"
 read response
+
+count=$(ls -l |grep "^-"|wc -l)
 
 while [[ ! $response -eq $count ]]
 do
